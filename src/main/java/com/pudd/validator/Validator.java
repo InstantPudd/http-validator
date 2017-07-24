@@ -29,7 +29,6 @@ public class Validator {
 	public interface ValidationWithMessageStep {
         ValidationExecuteStep withNoErrorMessage();
 		ValidationExecuteStep withErrorMessage(String errorMessage);
-
 	}
 
 	public interface ValidationExecuteStep {

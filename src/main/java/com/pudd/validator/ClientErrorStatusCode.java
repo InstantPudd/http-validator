@@ -208,7 +208,7 @@ public enum ClientErrorStatusCode {
 	STATUS_431(HttpStatus.REQUEST_ENTITY_TOO_LARGE),
 	REQUEST_HEADER_FIELDS_TOO_LARGE(HttpStatus.REQUEST_ENTITY_TOO_LARGE);
 
-	private HttpStatus status;
+	private final HttpStatus status;
 
 	public HttpStatus getHttpStatus() {
 		return status;

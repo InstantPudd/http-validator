@@ -5,11 +5,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ControllerExceptionHandler {
+public class ClientErrorExceptionHandler {
 	@ExceptionHandler(value = ClientErrorException.class)
     public ResponseEntity<String> handleBadRequestException(
         ClientErrorException e
     ) {
-        return new ResponseEntity<>( e.getMessage(), e.getStatusCode().getHttpStatus() );
+        return new ResponseEntity(
+			e.getMessage(),
+			e.getStatusCode().getHttpStatus()
+		);
     }
 }
