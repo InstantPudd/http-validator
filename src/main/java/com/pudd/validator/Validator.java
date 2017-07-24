@@ -5,8 +5,8 @@ package com.pudd.validator;
  * a particular HTTP status. Must be used in conjunction with
  * {@link ControllerExceptionHandler}. Example usage:
  * <code>
- *     Validation
- *	 		.returnStatus(ClientErrorStatusCode.BAD_REQUEST_400)
+ *     Validator
+ *			.returnStatus(ClientErrorStatusCode.BAD_REQUEST)
  *	 		.ifTrue(someExpression)
  *	 		.withErrorMessage("Your request needs some working on")
  *	 		.execute();
