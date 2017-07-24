@@ -1,8 +1,8 @@
 package com.pudd.validator;
 
 /**
- * This class is a fluent interface that allows you to conditionally return
- * a particular HTTP status. Must be used in conjunction with
+ * Allows for conditionally returning a particular HTTP status with a non-static
+ * error message. Must be used in conjunction with
  * {@link ControllerExceptionHandler}. Example usage:
  * <code>
  *     Validator
@@ -11,9 +11,11 @@ package com.pudd.validator;
  *	 		.withErrorMessage("Your request needs some working on")
  *	 		.execute();
  * </code>
+ * 
+ * This class follows the step builder pattern.
  */
 public class Validator {
-
+	
 	public static ValidationConditionStep returnStatus(ClientErrorStatusCode statusCode) {
 		return new ValidationBuilder(statusCode);
 	}

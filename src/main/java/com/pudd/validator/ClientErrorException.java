@@ -1,5 +1,8 @@
 package com.pudd.validator;
 
+/**
+ * Represents an 4xx http status code and corresponding error message
+ */
 public class ClientErrorException extends RuntimeException{
 
 	private ClientErrorStatusCode statusCode;
