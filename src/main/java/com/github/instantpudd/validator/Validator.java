@@ -1,9 +1,9 @@
-package com.pudd.validator;
+package com.github.instantpudd.validator;
 
 /**
  * Allows for conditionally returning a particular HTTP status with a non-static
  * error message. Must be used in conjunction with
- * {@link ControllerExceptionHandler}. Example usage:
+ * {@link ClientErrorExceptionHandler}. Example usage:
  * <code>
  *     Validator
  *			.returnStatus(ClientErrorStatusCode.BAD_REQUEST)

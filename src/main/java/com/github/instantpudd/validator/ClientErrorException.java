@@ -1,4 +1,4 @@
-package com.pudd.validator;
+package com.github.instantpudd.validator;
 
 /**
  * Represents an 4xx http status code and corresponding error message

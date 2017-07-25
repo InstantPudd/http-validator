@@ -1,4 +1,4 @@
-package com.pudd.validator;
+package com.github.instantpudd.validator;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

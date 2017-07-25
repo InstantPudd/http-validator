@@ -1,4 +1,4 @@
-package com.pudd.validator;
+package com.github.instantpudd.validator;
 
 import org.springframework.http.HttpStatus;
 

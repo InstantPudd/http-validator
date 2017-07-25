@@ -1,5 +1,8 @@
-package com.pudd.validator;
+package com.github.instantpudd.validator;
 
+import com.github.instantpudd.validator.Validator;
+import com.github.instantpudd.validator.ClientErrorStatusCode;
+import com.github.instantpudd.validator.ClientErrorException;
 import org.junit.Assert;
 import org.junit.Test;
 
