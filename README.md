@@ -1,4 +1,4 @@
-# http-validator
+# Spring Web Validator
 Utility methods for concise server-side http validation for client errors using Spring Web
 
 ## Adding to your project
