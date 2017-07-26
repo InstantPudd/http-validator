@@ -4,6 +4,15 @@ Utility methods for concise server-side http validation for client errors using 
 ## Adding to your project
 You will need to have the spring-web dependency in your project https://mvnrepository.com/artifact/org.springframework/spring-web. Anything below version 3.2 should not work.
 
+Add this dependency:
+```xml
+<dependency>
+    <groupId>com.github.instantpudd</groupId>
+    <artifactId>spring-web-validator</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
 Create a bean for ClientErrorExceptionHandler. This will allow it to work with Spring to map the exceptions this library throws to appropriate responses.
 ```java
 @Bean
