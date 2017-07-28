@@ -26,6 +26,7 @@ public class Validator {
 		ValidationWithMessageStep ifFalse(boolean expression);
 		ValidationWithMessageStep ifNull(Object thing);
 		ValidationWithMessageStep ifNotNull(Object thing);
+		ValidationWithMessageStep ifNullOrEmptyString(String string);
 	}
 
 	public interface ValidationWithMessageStep {
@@ -73,6 +74,12 @@ public class Validator {
 		@Override
 		public ValidationWithMessageStep ifNotNull(Object thing) {
 			shouldThrowException = thing != null;
+			return this;
+		}
+		
+		@Override
+		public ValidationWithMessageStep ifNullOrEmptyString(String string) {
+			shouldThrowException = string == null || string.isEmpty();
 			return this;
 		}
 

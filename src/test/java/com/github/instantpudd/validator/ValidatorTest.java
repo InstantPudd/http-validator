@@ -1,8 +1,5 @@
 package com.github.instantpudd.validator;
 
-import com.github.instantpudd.validator.Validator;
-import com.github.instantpudd.validator.ClientErrorStatusCode;
-import com.github.instantpudd.validator.ClientErrorException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -83,6 +80,33 @@ public class ValidatorTest {
 		Validator
 			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
 			.ifNull(32)
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test(expected = ClientErrorException.class)
+	public void ifNullOrEmptyString_shouldThrowExceptionIfNull() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifNullOrEmptyString(null)
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test(expected = ClientErrorException.class)
+	public void ifNullOrEmptyString_shouldThrowExceptionIfEmptyString() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifNullOrEmptyString("")
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test
+	public void ifNullOrEmptyString_shouldNotThrowExceptionIfNonEmptyString() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifNullOrEmptyString("short and stout")
 			.withNoErrorMessage()
 			.execute();
 	}
