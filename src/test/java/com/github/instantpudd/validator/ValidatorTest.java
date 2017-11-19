@@ -1,5 +1,6 @@
 package com.github.instantpudd.validator;
 
+import java.util.Optional;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -88,7 +89,7 @@ public class ValidatorTest {
 	public void ifNullOrEmptyString_shouldThrowExceptionIfNull() {
 		Validator
 			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
-			.ifNullOrEmptyString(null)
+			.ifStringNullOrEmpty(null)
 			.withNoErrorMessage()
 			.execute();
 	}
@@ -97,7 +98,7 @@ public class ValidatorTest {
 	public void ifNullOrEmptyString_shouldThrowExceptionIfEmptyString() {
 		Validator
 			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
-			.ifNullOrEmptyString("")
+			.ifStringNullOrEmpty("")
 			.withNoErrorMessage()
 			.execute();
 	}
@@ -106,7 +107,43 @@ public class ValidatorTest {
 	public void ifNullOrEmptyString_shouldNotThrowExceptionIfNonEmptyString() {
 		Validator
 			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
-			.ifNullOrEmptyString("short and stout")
+			.ifStringNullOrEmpty("short and stout")
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test(expected = ClientErrorException.class)
+	public void ifEmpty_shouldThrowExceptionIfEmpty() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifEmpty(Optional.empty())
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test
+	public void ifEmpty_shouldNotThrowExceptionIfNotEmpty() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifEmpty(Optional.of("short and stout"))
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test(expected = ClientErrorException.class)
+	public void ifNotEmpty_shouldThrowExceptionIfNotEmpty() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifNotEmpty(Optional.of("short and stout"))
+			.withNoErrorMessage()
+			.execute();
+	}
+	
+	@Test
+	public void ifNotEmpty_shouldNotThrowExceptionIfEmpty() {
+		Validator
+			.returnStatus(ClientErrorStatusCode.IM_A_TEAPOT)
+			.ifNotEmpty(Optional.empty())
 			.withNoErrorMessage()
 			.execute();
 	}

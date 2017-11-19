@@ -1,5 +1,7 @@
 package com.github.instantpudd.validator;
 
+import java.util.Optional;
+
 /**
  * Allows for conditionally returning a particular HTTP status with a non-static
  * error message. Must be used in conjunction with
@@ -26,7 +28,9 @@ public class Validator {
 		ValidationWithMessageStep ifFalse(boolean expression);
 		ValidationWithMessageStep ifNull(Object thing);
 		ValidationWithMessageStep ifNotNull(Object thing);
-		ValidationWithMessageStep ifNullOrEmptyString(String string);
+		ValidationWithMessageStep ifStringNullOrEmpty(String string);
+		ValidationWithMessageStep ifEmpty(Optional optional);
+		ValidationWithMessageStep ifNotEmpty(Optional optional);
 	}
 
 	public interface ValidationWithMessageStep {
@@ -78,8 +82,20 @@ public class Validator {
 		}
 		
 		@Override
-		public ValidationWithMessageStep ifNullOrEmptyString(String string) {
+		public ValidationWithMessageStep ifStringNullOrEmpty(String string) {
 			shouldThrowException = string == null || string.isEmpty();
+			return this;
+		}
+		
+		@Override
+		public ValidationWithMessageStep ifEmpty(Optional optional) {
+			shouldThrowException = ! optional.isPresent();
+			return this;
+		}
+		
+		@Override
+		public ValidationWithMessageStep ifNotEmpty(Optional optional) {
+			shouldThrowException = optional.isPresent();
 			return this;
 		}
 

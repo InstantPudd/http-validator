@@ -1,8 +1,5 @@
 package com.github.instantpudd.validator;
 
-import com.github.instantpudd.validator.ClientErrorStatusCode;
-import com.github.instantpudd.validator.ClientErrorExceptionHandler;
-import com.github.instantpudd.validator.ClientErrorException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
